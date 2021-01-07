@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get("/auth", function (\Illuminate\Http\Request $request) {
+    return 'Hello auth';
+});
+
 Route::middleware('auth:api')->get('/user', function () {
-    return 'Hello User';
+    $user = \Illuminate\Support\Facades\Auth::user();
+    return $user->uid;
 });
